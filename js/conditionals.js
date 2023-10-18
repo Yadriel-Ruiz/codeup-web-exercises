@@ -59,7 +59,9 @@ const randomColor = colors[Math.floor(Math.random() * colors.length)];
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
+console.log(randomColor);
 switch (randomColor) {
+
     case "red":
         console.log("Strawberries are red");
         break;
@@ -141,8 +143,8 @@ console.log(calculateTotal(5, 100));
  */
 // Generate a random number between 0 and 6
 const luckyNumber = Math.floor(Math.random() * 6);
-let totalBill = Number(prompt("What is the total of the bill?"));
-alert(calculateTotal(luckyNumber, totalBill));
+let totalBill = parseFloat(prompt("What is the total of the bill?"));
+alert(`Your lucky number is: ${luckyNumber}. Your total is $${totalBill.toFixed(2)}. ` + calculateTotal(luckyNumber,totalBill));
 
 /**
  * TODO:
@@ -178,7 +180,6 @@ function negativePositive(num){
         alert(`${num} is a positive number`)
     } else alert (`${num} is a negative number`)
 }
-
 if (yesNo === true) {
     let inputNumber = parseFloat(prompt('Please input a number'));
     let isNumber = !isNaN(inputNumber);
