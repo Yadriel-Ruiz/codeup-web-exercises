@@ -1,11 +1,11 @@
 "use strict"
 
-let i = 1;
+let x = 1;
 let num = 1;
-while(i <= 16){
+while(x <= 16){
     num = num * 2
     console.log(num);
-    ++i;
+    ++x;
 }
 
 let allCones = Math.floor(Math.random() * 50) + 50;
