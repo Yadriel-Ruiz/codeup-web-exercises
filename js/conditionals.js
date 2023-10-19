@@ -144,7 +144,7 @@ console.log(calculateTotal(5, 100));
 // Generate a random number between 0 and 6
 const luckyNumber = Math.floor(Math.random() * 6);
 let totalBill = parseFloat(prompt("What is the total of the bill?"));
-alert(`Your lucky number is: ${luckyNumber}. Your total is $${totalBill.toFixed(2)}. ` + calculateTotal(luckyNumber,totalBill));
+alert(`Your lucky number is: ${luckyNumber}. Your total is $${totalBill.toFixed(2)}. ` + calculateTotal(luckyNumber, totalBill));
 
 /**
  * TODO:
@@ -172,18 +172,21 @@ function evenOdd(num) {
         alert("Number is even");
     } else alert("Number is odd");
 }
-function plusHundred (num){
+
+function plusHundred(num) {
     alert(`Your ${num} + 100 = ${num + 100}`);
 }
-function negativePositive(num){
-    if (num > 0){
+
+function negativePositive(num) {
+    if (num > 0) {
         alert(`${num} is a positive number`)
-    } else alert (`${num} is a negative number`)
+    } else alert(`${num} is a negative number`)
 }
+
 if (yesNo === true) {
     let inputNumber = parseFloat(prompt('Please input a number'));
     let isNumber = !isNaN(inputNumber);
-    if (isNumber){
+    if (isNumber) {
         evenOdd(inputNumber);
         plusHundred(inputNumber);
         negativePositive(inputNumber);
