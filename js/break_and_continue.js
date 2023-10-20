@@ -26,7 +26,4 @@ for ( var i= 1; i < 50; i++){
     else{
         console.log("Here is an odd number:" + i)
     }
-    if (i>=49){
-        break;
-    }
 }
