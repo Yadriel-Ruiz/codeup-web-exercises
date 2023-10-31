@@ -7,10 +7,7 @@
 html{
     background-image: url("../img/cool-background.png");
 }
-*{
-    outline: red;
-    outline-style: dashed;
-}
+
 body {
     text-align: center;
     background: rgba(206, 206, 237, 0.27);
