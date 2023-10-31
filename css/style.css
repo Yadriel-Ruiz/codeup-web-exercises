@@ -1,4 +1,75 @@
 .fancy-header {
-    color: purple; /* single line comment */
+    color: #52AFCD; /* single line comment */
+    font-size: 36px;
+    text-decoration: underline;
+    text-align: center;
+}
+html{
+    background-image: url("../img/cool-background.png");
+}
+
+body {
+    text-align: center;
+    background: rgba(206, 206, 237, 0.27);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.6px);
+    -webkit-backdrop-filter: blur(3.6px);
+    border: 1px solid rgba(206, 206, 237, 0.22);
+    font-family: "October Compressed Devanagari";
+    font-size: large;
+}
+
+h2 {
+    font-size: 24px;
+    color: #52AFCD;
     text-decoration: underline;
 }
+
+ol {
+    text-align: center;
+    list-style-position: inside;
+   align-self: center;
+    list-style: upper-roman;
+}
+
+ul {
+    text-align: center;
+    list-style-position: inside;
+    list-style: square;
+}
+
+td {
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+td:hover {
+    background-color: #ccc;
+}
+tr {
+    background-color: #ddd;
+    border: 1px solid #000;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+table {
+    border-collapse: collapse; /* or separate */
+}
+
+img {
+    border-radius: 27px;
+    background: linear-gradient(145deg, #9e9e9e, #858585);
+    box-shadow:  11px 11px 22px #6e6e6e,
+    -11px -11px 22px #bababa;
+}
+
