@@ -7,7 +7,10 @@
 html{
     background-image: url("../img/cool-background.png");
 }
-
+*{
+    outline: red;
+    outline-style: dashed;
+}
 body {
     text-align: center;
     background: rgba(206, 206, 237, 0.27);
@@ -27,14 +30,13 @@ h2 {
 }
 
 ol {
-    text-align: center;
-    list-style-position: inside;
+    display: inline-block;
    align-self: center;
     list-style: upper-roman;
 }
 
 ul {
-    text-align: center;
+    display: inline-block;
     list-style-position: inside;
     list-style: square;
 }
@@ -63,6 +65,7 @@ tr {
     font-weight: bold;
 }
 table {
+    display: inline-block;
     border-collapse: collapse; /* or separate */
 }
 
@@ -71,5 +74,8 @@ img {
     background: linear-gradient(145deg, #9e9e9e, #858585);
     box-shadow:  11px 11px 22px #6e6e6e,
     -11px -11px 22px #bababa;
+}
+a{
+    color: dodgerblue;
 }
 
