@@ -80,10 +80,13 @@ button.btn.btn-login {
     right: -10px;
     top: -10px;
     border-radius: 50%;
-    border: 2px solid black;
+    border: .5px solid dimgray;
   position: absolute;
+    display: flex;
 }
-
+.cancel>img{
+    margin: auto;
+}
 .pic-background{
     object-fit: contain;
     position: absolute;
