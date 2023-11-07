@@ -16,7 +16,7 @@
             color: black;
         }
     </style>
-    <title>Hello, world!</title>
+    <title>Order Now!</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
@@ -178,10 +178,11 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary float-end" id="nextTabToToppingsBtn">Next Step></button>
+                    <button class="btn btn-secondary float-start" id="prevTabToSizeBtn">< Previous</button>
+                    <button class="btn btn-primary float-end" id="nextTabToToppingsBtn">Next Step ></button>
                 </div>
             </div>
-<!--           Tab 3: Toppings  -->
+            <!--           Tab 3: Toppings  -->
             <div class="tab-pane fade" id="pizza-toppings" role="tabpanel" aria-labelledby="pizza-toppings-tab"
                  tabindex="0">
                 <!-- Parent Card for Size Selection -->
@@ -228,13 +229,15 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="non-meat-topping" id="greenPeppers">
+                                    <input class="form-check-input" type="checkbox" name="non-meat-topping"
+                                           id="greenPeppers">
                                     <label class="form-check-label" for="greenPeppers">Green Peppers</label>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="non-meat-topping" id="mushrooms">
+                                    <input class="form-check-input" type="checkbox" name="non-meat-topping"
+                                           id="mushrooms">
                                     <label class="form-check-label" for="mushrooms">Mushrooms</label>
                                 </div>
                             </li>
@@ -246,7 +249,8 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="non-meat-topping" id="jalapeno">
+                                    <input class="form-check-input" type="checkbox" name="non-meat-topping"
+                                           id="jalapeno">
                                     <label class="form-check-label" for="jalapeno">Jalapeño Peppers</label>
                                 </div>
                             </li>
@@ -268,14 +272,21 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 <script>
+    function navigateToTab(tabId) {
+        var tab = document.getElementById(tabId);
+        tab.click();
+    }
+
+    document.getElementById('prevTabToSizeBtn').addEventListener('click', function () {
+        navigateToTab('pizza-size-tab');
+    });
+
     document.getElementById('nextTabToCheeseBtn').addEventListener('click', function () {
-        var pizzaCheeseTab = document.getElementById('pizza-cheese-tab');
-        pizzaCheeseTab.click();
+        navigateToTab('pizza-cheese-tab');
     });
 
     document.getElementById('nextTabToToppingsBtn').addEventListener('click', function () {
-        var pizzaToppingsTab = document.getElementById('pizza-toppings-tab');
-        pizzaToppingsTab.click();
+        navigateToTab('pizza-toppings-tab');
     });
 </script>
 
