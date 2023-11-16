@@ -36,15 +36,16 @@
     // TODO: Set inner html of mainHeader to "JavaScript is Cool"
     document.getElementById('button1').addEventListener('click', function () {
         mainHeader.innerHTML = 'JavaScript is Cool';
+        setTimeout(function (){alert('Thank for changing that title  :)')},1000)
     });
-
     // TODO: Uncomment the next line and get the sub header element by id
 
     const subHeader = document.getElementById('sub-header');
 
     // TODO: Set the text color of subHeader to blue
 document.getElementById('button2').addEventListener('click',function (){
-    subHeader.style.color = 'blue'
+    subHeader.style.color = 'blue';
+    setTimeout(function (){alert('It is a decent blue')},1000)
 })
 
 
@@ -63,6 +64,7 @@ document.getElementById('button3').addEventListener('click',function (){
     });
     // TODO: Set text color of li with dbid = 1 to blue
     document.querySelector('li[data-dbid="1"]').style.color = 'blue';
+    setTimeout(function (){alert('Is that really enough color?')},1000)
 })
 
     // TODO: Uncomment the next line and get all elements with class name sub-paragraph
@@ -71,6 +73,7 @@ document.getElementById('button3').addEventListener('click',function (){
     // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
     document.getElementById('button4').addEventListener('click',function (){
         subParagraphs[0].innerText = 'Mission Accomplished!';
+        setTimeout(function (){alert('You did okay, be faster next time clicking!')},1000)
     })
 
 </script>
