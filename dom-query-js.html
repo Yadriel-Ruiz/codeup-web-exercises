@@ -24,33 +24,33 @@
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
-<button id="button1">Change that title at the top!</button>
-<button id="button2">Turn blue the 'Hello Again'</button>
-<button id="button3">Give some color to that list</button>
-<button id="button4">Click this last</button>
+<!--<button id="button1">Change that title at the top!</button>-->
+<!--<button id="button2">Turn blue the 'Hello Again'</button>-->
+<!--<button id="button3">Give some color to that list</button>-->
+<!--<button id="button4">Click this last</button>-->
 <script>
     "use strict";
     // TODO: Uncomment next line and get the main header element by id
     const mainHeader = document.getElementById('main-header');
 
     // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-    document.getElementById('button1').addEventListener('click', function () {
+    // document.getElementById('button1').addEventListener('click', function () {
         mainHeader.innerHTML = 'JavaScript is Cool';
-        setTimeout(function (){alert('Thank for changing that title  :)')},1000)
-    });
+    //     setTimeout(function (){alert('Thank for changing that title  :)')},1000)
+    // });
     // TODO: Uncomment the next line and get the sub header element by id
 
     const subHeader = document.getElementById('sub-header');
 
     // TODO: Set the text color of subHeader to blue
-document.getElementById('button2').addEventListener('click',function (){
+// document.getElementById('button2').addEventListener('click',function (){
     subHeader.style.color = 'blue';
-    setTimeout(function (){alert('It is a decent blue')},1000)
-})
+//     setTimeout(function (){alert('It is a decent blue')},1000)
+// })
 
 
     // TODO: Uncomment the next line and get all list items
-document.getElementById('button3').addEventListener('click',function (){
+// document.getElementById('button3').addEventListener('click',function (){
 
     // TODO: Uncomment the next line to get all lists items
     const listItems = document.querySelectorAll('ul li');
@@ -64,18 +64,31 @@ document.getElementById('button3').addEventListener('click',function (){
     });
     // TODO: Set text color of li with dbid = 1 to blue
     document.querySelector('li[data-dbid="1"]').style.color = 'blue';
-    setTimeout(function (){alert('Is that really enough color?')},1000)
-})
+    // setTimeout(function (){alert('Is that really enough color?')},1000)
+// })
 
     // TODO: Uncomment the next line and get all elements with class name sub-paragraph
     const subParagraphs = document.getElementsByClassName('sub-paragraph');
 
     // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-    document.getElementById('button4').addEventListener('click',function (){
+    // document.getElementById('button4').addEventListener('click',function (){
         subParagraphs[0].innerText = 'Mission Accomplished!';
-        setTimeout(function (){alert('You did okay, be faster next time clicking!')},1000)
-    })
+    //     setTimeout(function (){alert('You did okay, be faster next time clicking!')},1000)
+    // })
+    mainHeader.addEventListener("click", function () {
+        mainHeader.style.backgroundColor = 'red'} );
 
+    subParagraphs[0].addEventListener('dblclick', () =>
+       subParagraphs[0].style.fontSize ='18px');
+
+    listItems.forEach((item) => {
+        item.addEventListener('mouseenter', function (){
+            item.style.color = 'red'
+        });
+        item.addEventListener('mouseleave', function (){
+            item.style.color = 'black';
+        })
+    })
 </script>
 </body>
 </html>
