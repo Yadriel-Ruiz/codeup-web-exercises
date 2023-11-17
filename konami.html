@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+    <link rel="stylesheet" type="text/css" href="css/konami.css">
+</head>
+<body>
+<h1>Konami Code</h1>
+<p>Your total lives are: </p>
+<section class="lives">3</section>
+<h1 id="hint"></h1>
+<div id="imageContainer"></div>
+<section class="part">
+    <div id="exodia" class="exodia"></div>
+    <section class="spaced">
+    <div id="arms" class="arms"></div>
+    </section>
+    <div id="legs" class="legs"></div>
+</section>
+<audio id="konamiSound" src="sounds/exodia.mp3" preload="auto"></audio>
+<script>
+    const konamiCode = "ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightbaEnter";
+    let exodia = "exodia";
+    let userInput = "";
+    let livesTotal = document.querySelector('.lives');
+    let sound = document.getElementById('konamiSound');
+    let popUp = document.getElementById('hint');
+
+    //JIMBO-------------------
+    function addDelayedImage() {
+        const imageContainer = document.getElementById('imageContainer');
+
+        // Create an image element
+        const imageElement = document.createElement('img');
+        imageElement.src = 'img/jimbo.png'; // Replace with the actual path to your image
+        imageElement.alt = 'Jimbo';
+
+        // Append the image to the container
+        imageContainer.appendChild(imageElement);
+
+    };
+
+    //EXODIA Head--------------------
+    function addPieces() {
+        const imageContainer = document.getElementById('exodia');
+
+        // Create an image element
+        const imageElement = document.createElement('img');
+        imageElement.src = 'img/head.png';
+        imageElement.alt = 'Exodia';
+
+        // Append the image to the container
+        imageContainer.appendChild(imageElement);
+    };
+
+    //EXODIA ARMS---------------------
+    function addLeftArms() {
+        const imageContainer = document.getElementById('arms');  // Use 'arms' ID for arms container
+
+        // Create an image element
+        const imageElement = document.createElement('img');
+        imageElement.src = 'img/left.png';
+        imageElement.alt = 'leftArms';
+
+        // Append the image to the container
+        imageContainer.appendChild(imageElement);
+    };
+
+    function addRightArms() {
+        const imageContainer = document.getElementById('arms');  // Use 'arms' ID for arms container
+
+        // Create an image element
+        const imageElement = document.createElement('img');
+        imageElement.src = 'img/right.png';
+        imageElement.alt = 'arms';
+
+        // Append the image to the container
+        imageContainer.appendChild(imageElement);
+    }
+
+    function addLeftLegs() {
+        const imageContainer = document.getElementById('legs');  // Use 'legs' ID for legs container
+
+        // Create an image element
+        const imageElement = document.createElement('img');
+        imageElement.src = 'img/left-leg.png';
+        imageElement.alt = 'legs';
+
+        // Append the image to the container
+        imageContainer.appendChild(imageElement);
+    };
+
+    function addRighttLegs() {
+        const imageContainer = document.getElementById('legs');  // Use 'legs' ID for legs container
+
+        // Create an image element
+        const imageElement = document.createElement('img');
+        imageElement.src = 'img/right-leg.png';
+        imageElement.alt = 'legs';
+
+        // Append the image to the container
+        imageContainer.appendChild(imageElement);
+    }
+
+    function addImages() {
+        // Add head
+        addPieces();
+
+        // Add arms
+        addLeftArms();
+        addRightArms();
+
+        // Add legs
+        addLeftLegs();
+        addRighttLegs();
+    }
+
+    //This adds new text after 30 seconds
+    function addText() {
+        popUp.textContent = 'Summon "Exodia" :)';
+    };
+    setTimeout(addText, 30000);
+
+    //Konami Code
+    document.addEventListener("keyup", event => {
+        userInput += event.key.toLowerCase();
+
+        // Check if the entered sequence contains the konami Code
+        if (userInput.includes(konamiCode.toLowerCase())) {
+            alert("You have added 30 lives!");
+
+            // Shows the lives that the user has
+            const currentLives = parseInt(livesTotal.textContent);
+            livesTotal.textContent = currentLives + 30;
+            userInput = "";  // Reset the user input
+        }
+        //Exodia-------------------------
+        if (userInput.includes(exodia.toLowerCase())) {
+            alert(`Looks like you're done here`);
+            setTimeout(addDelayedImage, 1000);
+            //Added sound to it
+            sound.play();
+            setTimeout(addImages, 3000);
+            setTimeout(function () {
+                livesTotal.textContent = '0';
+            }, 10000);
+            // Reloads page because Exodia
+            setTimeout(function () {
+                location.reload();
+            }, 15000)
+        }
+
+    });
+
+    document.addEventListener("keyup", event => console.log(event.key));
+</script>
+</body>
+</html>
