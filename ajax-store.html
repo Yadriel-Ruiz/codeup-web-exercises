@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table id="products">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Categories</th>
+    </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<script>
+    "use strict";
+    // TODO: Create an AJAX GET request for the file under data/inventory.json
+    fetch("data/inventory.json").then(resp => resp.json()).then(data => console.log(data));
+    // TODO: Take the data from inventory.json and append it to the products table
+    fetch("data/inventory.json").then(resp => resp.json()).then(data => {
+        console.log(data);
+        data.forEach(product => {
+
+            const tr = document.createElement("tr");
+
+            const tableTitle = document.createElement("td");
+            tableTitle.innerText = product.title;
+
+            const tableQuantity = document.createElement("td");
+            tableQuantity.innerText = product["quantity"];
+
+            const tablePrice = document.createElement("td");
+            tablePrice.innerText = product["price"];
+
+            const tableCategories = document.createElement("td");
+            tableCategories.innerText = product["categories"].join(', ');
+
+            tr.appendChild(tableTitle);
+            tr.appendChild(tableQuantity);
+            tr.appendChild(tablePrice);
+            tr.appendChild(tableCategories);
+            document.querySelector("#insertProducts").appendChild(tr);
+        })
+    }).catch(error => console.error("Error fetching data:", error));
+
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+</script>
+
+</body>
+</html>
