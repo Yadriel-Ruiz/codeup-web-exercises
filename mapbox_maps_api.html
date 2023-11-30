@@ -9,13 +9,15 @@
     <link rel="stylesheet"
           href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
           type="text/css">
-    <!--
-    Redraw the map of the above location at zoom levels 5, 15, and 20. Do this by simply changing the value of zoom
-    level where the map properties are initially set and refresh the page to see the changes. Can the zoom be changed
-    programmatically after the initial map is drawn?
-    -->
 </head>
 <body>
+<label for="zoomSelect">Select Zoom Level:</label>
+<select id="zoomSelect" onchange="changeZoomLevel()">
+    <option value="5">Zoom 5</option>
+    <option value="15">Zoom 15</option>
+    <option value="20">Zoom 20</option>
+</select>
+<button onclick="hideMarkers()">Hide Markers</button>
 
 <div id='map' style='width: 80vw; height: 80vh;'></div>
 
@@ -57,31 +59,40 @@
     map.addControl(new mapboxgl.NavigationControl());
 
     //Refactored code to add the 3 restaurants
-    restaurants.forEach((restaurant) => {
-        const { name, coordinates, announcement } = restaurant;
+    let markers = [];
 
-        const marker = new mapboxgl.Marker()
-            .setLngLat(coordinates)
-            .addTo(map);
+    // Function to add markers
+    function addMarkers() {
+        restaurants.forEach((restaurant) => {
+            const {name, coordinates, announcement} = restaurant;
 
-        const popup = new mapboxgl.Popup()
-            .setHTML(`<p>${announcement}</p>`);
+            const marker = new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map);
 
-        marker.setPopup(popup);
-    });
+            const popup = new mapboxgl.Popup()
+                .setHTML(`<p>${announcement}</p>`);
 
-//Changing the zoom level using timeout in order for it to not continue repeating itself
-    setTimeout(() => {
-        map.setZoom(5);
-    }, 2000);
+            marker.setPopup(popup);
 
-    setTimeout(() => {
-        map.setZoom(15);
-    }, 4000);
+            markers.push(marker);
+        });
+    }
 
-    setTimeout(() => {
-        map.setZoom(20);
-    }, 6000);
+    addMarkers();
+
+//Changing the zoom level
+    function changeZoomLevel() {
+        const select = document.getElementById('zoomSelect');
+        const selectedZoom = select.value;
+        map.setZoom(Number(selectedZoom));
+    }
+    function hideMarkers() {
+        markers.forEach((marker) => {
+            marker.remove(); // Remove each marker from the map
+        });
+        markers = []; // Clear the array
+    }
 </script>
 </body>
 </html>
