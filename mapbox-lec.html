@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+</head>
+<body>
+
+<div id='map' style='width: 80vw; height: 50vh;'></div>
+
+<script src="js/keys.js"></script>
+
+
+<script>
+
+    // Creates the map
+    mapboxgl.accessToken = MB_KEY;
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [-95.3698, 29.7604], // starting position [lng, lat]
+        zoom: 9, // starting zoom
+    });
+
+    //Adds a search bar to the map
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: MB_KEY,
+            mapboxgl: mapboxgl
+        }));
+
+    //Gives you zoom control on the map
+    map.addControl(new mapboxgl.NavigationControl());
+
+
+    //Add a marker to the map
+    const marker = new mapboxgl.Marker()
+        .setLngLat([-98.4916, 29.4260])
+        .addTo(map);
+
+    // Add a popup to the map
+    let popup = new mapboxgl.Popup()
+        .setLngLat([-98.489615, 29.426827])
+        .setHTML("<p>Codeup Rocks!</p>")
+        .addTo(map);
+
+
+    //Clicking on the marker gives you the popup
+    const codeupPopup = new mapboxgl.Popup()
+        .setHTML("<p>Welcome to San Antonio!</p>");
+
+    marker.setPopup(codeupPopup);
+</script>
+</body>
+</html>
