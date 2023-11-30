@@ -13,19 +13,11 @@
     Redraw the map of the above location at zoom levels 5, 15, and 20. Do this by simply changing the value of zoom
     level where the map properties are initially set and refresh the page to see the changes. Can the zoom be changed
     programmatically after the initial map is drawn?
-
-
-    Create a popup with the name of the restaurant.
-
-    Make sure the info window does not display until the marker has been clicked on.
-
-    Refactor your code to display at least three of your favorite restaurants with information about each. Create an
-    array of objects with information about each restaurant to accomplish this. Use a .forEach()
-    loop rather than a for loop.-->
+    -->
 </head>
 <body>
 
-<div id='map' style='width: 80vw; height: 50vh;'></div>
+<div id='map' style='width: 80vw; height: 80vh;'></div>
 
 
 <script src="js/keys.js"></script>
@@ -34,18 +26,24 @@
     // Creates the map
     mapboxgl.accessToken = MB_KEY;
 
-    //code to run different zooms on refresh
-    let zoomOnRefresh = [5, 15, 20];
-    let randomIndex = Math.floor(Math.random() * zoomOnRefresh.length);
-    let randomNumber = zoomOnRefresh[randomIndex];
-
+    let restaurants = [
+        {name: "Franks Pizza",
+         coordinates: [-95.36260, 29.76139],
+        announcement: "Welcome to Frank's Pizza"},
+        {name: "Breakfast Klub",
+         coordinates: [-95.38042, 29.73840],
+        announcement: "Welcome to Breakfast Klub"},
+        {name: "Rainbow Lodge",
+         coordinates: [-95.42945, 29.80438],
+        announcement: "Welcome to Rainbow Lodge"},
+    ]
 
     const map = new mapboxgl.Map({
 
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
         center: [-95.38042, 29.73840], // starting position Houston
-        zoom: randomNumber// starting zoom
+        zoom: 11// starting zoom
     });
 
     //Adds a search bar to the map
@@ -58,18 +56,32 @@
     //Gives you zoom control on the map
     map.addControl(new mapboxgl.NavigationControl());
 
+    //Refactored code to add the 3 restaurants
+    restaurants.forEach((restaurant) => {
+        const { name, coordinates, announcement } = restaurant;
 
-    //Add a marker to the map
-    const marker = new mapboxgl.Marker()
-        .setLngLat([-95.38042, 29.73840])
-        .addTo(map);
+        const marker = new mapboxgl.Marker()
+            .setLngLat(coordinates)
+            .addTo(map);
 
+        const popup = new mapboxgl.Popup()
+            .setHTML(`<p>${announcement}</p>`);
 
-    //Clicking on the marker gives you the popup
-    const breakFast = new mapboxgl.Popup()
-        .setHTML("<p>Welcome to Breakfast Klub!</p>");
+        marker.setPopup(popup);
+    });
 
-    marker.setPopup(breakFast);
+//Changing the zoom level using timeout in order for it to not continue repeating itself
+    setTimeout(() => {
+        map.setZoom(5);
+    }, 2000);
+
+    setTimeout(() => {
+        map.setZoom(15);
+    }, 4000);
+
+    setTimeout(() => {
+        map.setZoom(20);
+    }, 6000);
 </script>
 </body>
 </html>
