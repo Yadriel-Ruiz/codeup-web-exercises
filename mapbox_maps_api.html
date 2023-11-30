@@ -9,17 +9,11 @@
     <link rel="stylesheet"
           href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
           type="text/css">
-    <!--  Generate a Mapbox API Key using the steps from above
-
-    Create a new file named mapbox_maps_api.html and add a map using the next steps.
-
-    Generate a map that shows the city with your favorite restaurant using geocoding.
-
+    <!--
     Redraw the map of the above location at zoom levels 5, 15, and 20. Do this by simply changing the value of zoom
     level where the map properties are initially set and refresh the page to see the changes. Can the zoom be changed
     programmatically after the initial map is drawn?
 
-    Create a marker on your map of the exact location of your favorite restaurant set the zoom to allow for best viewing distance.
 
     Create a popup with the name of the restaurant.
 
@@ -39,11 +33,19 @@
 
     // Creates the map
     mapboxgl.accessToken = MB_KEY;
+
+    //code to run different zooms on refresh
+    let zoomOnRefresh = [5, 15, 20];
+    let randomIndex = Math.floor(Math.random() * zoomOnRefresh.length);
+    let randomNumber = zoomOnRefresh[randomIndex];
+
+
     const map = new mapboxgl.Map({
+
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
-        center: [-95.3698, 29.7604], // starting position [lng, lat]
-        zoom: 9, // starting zoom
+        center: [-95.38042, 29.73840], // starting position Houston
+        zoom: randomNumber// starting zoom
     });
 
     //Adds a search bar to the map
@@ -59,21 +61,15 @@
 
     //Add a marker to the map
     const marker = new mapboxgl.Marker()
-        .setLngLat([-98.4916, 29.4260])
-        .addTo(map);
-
-    // Add a popup to the map
-    let popup = new mapboxgl.Popup()
-        .setLngLat([-98.489615, 29.426827])
-        .setHTML("<p>Codeup Rocks!</p>")
+        .setLngLat([-95.38042, 29.73840])
         .addTo(map);
 
 
     //Clicking on the marker gives you the popup
-    const codeupPopup = new mapboxgl.Popup()
-        .setHTML("<p>Welcome to San Antonio!</p>");
+    const breakFast = new mapboxgl.Popup()
+        .setHTML("<p>Welcome to Breakfast Klub!</p>");
 
-    marker.setPopup(codeupPopup);
+    marker.setPopup(breakFast);
 </script>
 </body>
 </html>
