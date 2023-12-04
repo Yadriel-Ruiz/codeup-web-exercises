@@ -1,5 +1,5 @@
 mapboxgl.accessToken = MB_KEY;
-
+const WM_TOKEN = WM_KEY;
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
@@ -43,6 +43,16 @@ function createMarker(lngLat) {
     console.log(forecastData);
 }
 
+async function getWeatherAndUpdateCards(lngLat) {
+    try {
+        const forecastData = await getWeatherForecast(lngLat);
+        generateWeatherCards(forecastData);
+    } catch (error) {
+        console.error('Error updating weather cards on page load:', error);
+    }
+}
+
+getWeatherAndUpdateCards([-95.38042, 29.73840]);
 // Function to update the marker
 function updateMarker(lngLat) {
     if (currentMarker) {
@@ -69,13 +79,14 @@ map.on('click', async function (event) {
     try {
         console.log(lngLat);
         const forecastData = await getWeatherForecast(lngLat);
+        generateWeatherCards(forecastData);
     } catch (error) {
         console.error('Error fetching weather forecast data:', error);
     }
 });
 
 // Information for weather map API
-const WM_TOKEN = WM_KEY;
+
 function getWeatherForecast(lngLat) {
     const lat = lngLat[1];
     const lon = lngLat[0];
